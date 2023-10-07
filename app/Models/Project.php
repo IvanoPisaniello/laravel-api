@@ -13,13 +13,13 @@ class Project extends Model
         'languages_used' => 'array'
     ];
 
-    protected $fillable=[
-'title',
-'slug',
-'description',
-'image',
-'language_used',
-'github_url',
+    protected $fillable = [
+        'title',
+        'slug',
+        'description',
+        'image',
+        'languages_used',
+        'github_url',
 
-    ]
+    ];
 }
