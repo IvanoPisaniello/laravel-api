@@ -28,6 +28,33 @@ class ProjectController extends Controller
         return view('admin.projects.create');
     }
 
+
+    public function edit($slug)
+    {
+        $project = Project::where('slug', $slug)->firstOrFail();
+        return view('admin.projects.edit', compact('project'));
+    }
+
+
+
+    public function update(Request $request, $slug)
+    {
+        $data = $request->validate([
+            'title' => 'required',
+            'image' => 'required',
+            'github_url' => 'required',
+            'languages_used' => 'required',
+            'description' => 'required',
+        ]);
+
+        $project = Project::where('slug', $slug)->firstOrFail();
+
+        $project->update($data);
+
+        return redirect()->route('admin.projects.show', $project->slug);
+    }
+
+
     public function store(Request $request)
     {
         $data = $request->validate([
@@ -54,7 +81,17 @@ class ProjectController extends Controller
         $data["languages_used"] = explode(",", $data["languages_used"]);
 
         $project = Project::create($data);
-
         return redirect()->route('admin.projects.show', $project->slug);
+    }
+
+    public function destroy($slug)
+    {
+        $project = Project::where('slug', $slug)->firstOrFail();
+
+        // Effettua l'eliminazione del progetto
+        $project->delete();
+
+        // Reindirizzo l'utente alla lista dei progetti 
+        return redirect()->route('admin.projects.index');
     }
 }
