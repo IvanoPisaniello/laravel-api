@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h1 class="fw-bold py-3 text-uppercase">Inserisci i nuovi dati del tuo progetto</h1>
+        <h1 class="fw-bold py-3 text-uppercase text-white">Inserisci i nuovi dati del tuo progetto</h1>
 
         <form action="{{ route('admin.projects.update', $project->slug) }}" method="POST">
             @csrf()
