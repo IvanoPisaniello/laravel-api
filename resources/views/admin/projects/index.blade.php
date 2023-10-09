@@ -1,4 +1,12 @@
+
+<?php
+
+use Illuminate\Support\Str;
+
+?>
+
 @extends('layouts.app')
+
 
 @section('content')
 <div class="container pt-5">
@@ -16,7 +24,8 @@
                     <img src="{{ asset($project->image) }}" class="card-img-top" alt="image not found">
                     <div class="card-body">
                         <h5 class="card-title text-white">{{ $project->title }}</h5>
-                        <p class="card-text custom-text-color">{{ $project->description }}</p>
+                        <p class="card-text custom-text-color">{{ str::limit($project->description, $limit = 70, $end = '...') }}</p>
+
                         <small class="card-text custom-text-color">Linguaggi utilizzati:
                             @if(is_array($project->languages_used))
                             {{ implode(', ', $project->languages_used) }}
