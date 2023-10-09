@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Symfony\Component\CssSelector\XPath\Extension\FunctionExtension;
 use Illuminate\Support\Str;
+use App\Http\Requests\ProjectUpsertRequest;
 
 class ProjectController extends Controller
 {
@@ -37,15 +38,9 @@ class ProjectController extends Controller
 
 
 
-    public function update(Request $request, $slug)
+    public function update(ProjectUpsertRequest $request, $slug)
     {
-        $data = $request->validate([
-            'title' => 'required',
-            'image' => 'required',
-            'github_url' => 'required',
-            'languages_used' => 'required',
-            'description' => 'required',
-        ]);
+        $data = $request->validated();
 
         $project = Project::where('slug', $slug)->firstOrFail();
 
@@ -55,15 +50,10 @@ class ProjectController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(ProjectUpsertRequest $request)
     {
-        $data = $request->validate([
-            'title' => 'required',
-            'image' => 'required',
-            'github_url' => 'required',
-            'languages_used' => 'required',
-            'description' => 'required',
-        ]);
+        $data = $request->validated();
+
 
         $counter = 0;
 
