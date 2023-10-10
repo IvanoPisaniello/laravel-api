@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Symfony\Component\CssSelector\XPath\Extension\FunctionExtension;
 use Illuminate\Support\Str;
 use App\Http\Requests\ProjectUpsertRequest;
+use Illuminate\Support\Facades\Storage;
+
 
 class ProjectController extends Controller
 {
@@ -41,9 +43,8 @@ class ProjectController extends Controller
     public function update(ProjectUpsertRequest $request, $slug)
     {
         $data = $request->validated();
-
+        $data['image'] = Storage::put('projects', $data['image']);
         $project = Project::where('slug', $slug)->firstOrFail();
-
         $project->update($data);
 
         return redirect()->route('admin.projects.show', $project->slug);
@@ -53,9 +54,12 @@ class ProjectController extends Controller
     public function store(ProjectUpsertRequest $request)
     {
         $data = $request->validated();
+        $data['image'] = Storage::put('projects', $data['image']);
 
 
         $counter = 0;
+
+
 
         do {
             // creo uno slug e se il counte e maggiore di 0, concateno il counter

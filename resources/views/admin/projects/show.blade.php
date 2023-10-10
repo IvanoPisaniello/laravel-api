@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="card transparent-card">
-            <img src="{{ asset($project->image) }}" class="card-img-top" alt="Image not found">
+            <img src="{{ asset('storage/' . $project->image) }}" class="card-img-top" alt="Image not found">
             <div class="card-body text-white">
                 <h1 class="card-title fw-bold text-uppercase text-white">{{ $project->title }}</h1>
                 <p class="card-text">{{ $project->description }}</p>

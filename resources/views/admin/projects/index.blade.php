@@ -21,7 +21,7 @@ use Illuminate\Support\Str;
         <div class="col mb-4">
             <div class="card index-card border-white bg-transparent text-white">
                 <a href="{{ route('admin.projects.show', $project->slug) }}" class="text-decoration-none">
-                    <img src="{{ asset($project->image) }}" class="card-img-top" alt="image not found">
+                    <img src="{{ asset('storage/' . $project->image) }}" class="card-img-top" alt="image not found">
                     <div class="card-body">
                         <h5 class="card-title text-white">{{ $project->title }}</h5>
                         <p class="card-text custom-text-color">{{ str::limit($project->description, $limit = 70, $end = '...') }}</p>
