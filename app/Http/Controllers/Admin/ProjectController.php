@@ -42,9 +42,21 @@ class ProjectController extends Controller
 
     public function update(ProjectUpsertRequest $request, $slug)
     {
+
+
         $data = $request->validated();
-        $data['image'] = Storage::put('projects', $data['image']);
         $project = Project::where('slug', $slug)->firstOrFail();
+        if (key_exists("image", $data)) {
+            // carico il nuovo file
+            // salvo in una variabile temporanea il percorso del nuovo file
+            $data['image'] = Storage::put('projects', $data['image']);
+
+            // Dopo aver caricato la nuova immagine, PRIMA di aggiornare il db,
+            // cancelliamo dallo storage il vecchio file.
+            // $post->cover_img // vecchio file
+            Storage::delete($project->image);
+        }
+
         $project->update($data);
 
         return redirect()->route('admin.projects.show', $project->slug);
@@ -81,6 +93,11 @@ class ProjectController extends Controller
     public function destroy($slug)
     {
         $project = Project::where('slug', $slug)->firstOrFail();
+
+        if ($project->image) {
+            Storage::delete($project->image);
+        }
+
 
         // Effettua l'eliminazione del progetto
         $project->delete();
