@@ -7,6 +7,9 @@
             <div class="card-body text-white">
                 <h1 class="card-title fw-bold text-uppercase text-white">{{ $project->title }}</h1>
                 <p class="card-text">{{ $project->description }}</p>
+                <p class="badge mb-4 mt-3" >
+                    {{ $project->type->name }} ({{ $project->type->description }})
+                </p>
                 <small class="card-text">Linguaggi utilizzati:
                     @if(is_array($project->languages_used))
                         {{ implode(', ', $project->languages_used) }}

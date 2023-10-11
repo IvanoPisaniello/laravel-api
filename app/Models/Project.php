@@ -24,6 +24,7 @@ class Project extends Model
         'image',
         'languages_used',
         'github_url',
+        'type_id'
 
     ];
 
