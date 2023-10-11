@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container show-page">
         <div class="card transparent-card">
             <img src="{{ asset('storage/' . $project->image) }}" class="card-img-top" alt="Image not found">
             <div class="card-body text-white">

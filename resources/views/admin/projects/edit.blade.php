@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container edit-page">
         <h1 class="fw-bold py-3 text-uppercase text-white">Inserisci i nuovi dati del tuo progetto</h1>
 
         <form action="{{ route('admin.projects.update', $project->slug) }}" method="POST" enctype="multipart/form-data">
