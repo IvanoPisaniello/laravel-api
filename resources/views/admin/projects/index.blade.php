@@ -25,21 +25,21 @@ use Illuminate\Support\Str;
                     <div class="card-body">
                         <h5 class="card-title text-white">{{ $project->title }}</h5>
                         <p class="card-text custom-text-color">{{ str::limit($project->description, $limit = 70, $end = '...') }}</p>
-                        <p class="badge mb-4 mt-3">
+                        <p class="badge mb-4 mt-3"> Tipologia Progetto:
                             @if ($project->type)
-                                {{ $project->type->name }} ({{ $project->type->description }})
+                                {{ $project->type->name }} 
                             @else
                                <p>Il campo è null</p>
                             @endif
                         </p>
                      
-                        <small class="card-text custom-text-color">Linguaggi utilizzati:
+                        <p class="card-text custom-text-color">Linguaggi utilizzati:
                             @if(is_array($project->languages_used))
                             {{ implode(', ', $project->languages_used) }}
                             @else
                             {{ $project->languages_used }}
                             @endif
-                        </small>
+                        </p>
                     </div>
                     <div class="card-footer bg-transparent">
                         <a href="{{ $project->github_url }}" class="btn btn-light btn-sm rounded-pill" target="_blank">

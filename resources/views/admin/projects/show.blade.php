@@ -7,20 +7,20 @@
             <div class="card-body text-white">
                 <h1 class="card-title fw-bold text-uppercase text-white">{{ $project->title }}</h1>
                 <p class="card-text">{{ $project->description }}</p>
-                <p class="badge mb-4 mt-3">
+                <p class="badge mb-4 mt-3">Tipologia Progetto:
                     @if ($project->type)
                         {{ $project->type->name }} ({{ $project->type->description }})
                     @else
                         Il campo è null
                     @endif
                 </p>
-                <small class="card-text">Linguaggi utilizzati:
+                <p class="card-text">Linguaggi utilizzati:
                     @if(is_array($project->languages_used))
                         {{ implode(', ', $project->languages_used) }}
                     @else
                         {{ $project->languages_used }}
                     @endif
-                </small>
+                </p>
                 <div class="mt-3">
                     <a href="{{ $project->github_url }}" class="btn btn-primary btn-rounded">
                         <i class="fa-brands fa-github"></i>
