@@ -21,6 +21,12 @@
                         {{ $project->languages_used }}
                     @endif
                 </p>
+
+                <div>
+                    @foreach ($project->technologies as $technology)
+                        <div class="badge" style="background-color: rgb({{ $technology->color }})">{{ $technology->name }}</div>
+                    @endforeach
+                  </div>
                 <div class="mt-3">
                     <a href="{{ $project->github_url }}" class="btn btn-primary btn-rounded">
                         <i class="fa-brands fa-github"></i>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Technology;
 use App\Models\Type;
 use App\Models\Project;
 use App\Http\Controllers\Controller;
@@ -31,7 +32,8 @@ class ProjectController extends Controller
     {
 
         $types = Type::all();
-        return view('admin.projects.create', ['types' => $types]);
+        $technologies = Technology::all();
+        return view('admin.projects.create', ['types' => $types, 'technologies' => $technologies]);
     }
 
 
@@ -39,7 +41,8 @@ class ProjectController extends Controller
     {
         $project = Project::where('slug', $slug)->firstOrFail();
         $types = Type::all();
-        return view('admin.projects.edit', compact('project', 'types'));
+        $technologies = Technology::all();
+        return view('admin.projects.edit', compact('project', 'types', 'technologies'));
     }
 
 
@@ -60,7 +63,7 @@ class ProjectController extends Controller
             // $post->cover_img // vecchio file
             Storage::delete($project->image);
         }
-
+        $project->technologies()->sync($data["technologies"]);
         $project->update($data);
 
         return redirect()->route('admin.projects.show', $project->slug);
@@ -91,6 +94,11 @@ class ProjectController extends Controller
         $data["languages_used"] = explode(",", $data["languages_used"]);
 
         $project = Project::create($data);
+
+        if (key_exists("technologies", $data)) {
+            $project->technologies()->attach($data["technologies"]);
+        }
+
         return redirect()->route('admin.projects.show', $project->slug);
     }
 

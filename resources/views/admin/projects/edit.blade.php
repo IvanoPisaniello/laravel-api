@@ -56,7 +56,12 @@
                     @endforeach
                 </select>
             </div>
-
+            @foreach ($technologies as $technology)
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" name="technologies[]" value="{{$technology->id}}" {{ $project->technologies?->contains($technology) ? 'checked' : '' }}>
+                <label class="form-check-label" for="flexSwitchCheckDefault">{{$technology->name}}</label>
+              </div>
+            @endforeach
             <button type="submit" class="btn btn-primary">Salva</button>
         </form>
     </div>

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Technology;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use PhpParser\Node\Stmt\TryCatch;
 
 class TechnologiesTableSeeder extends Seeder
 {
@@ -30,7 +31,19 @@ class TechnologiesTableSeeder extends Seeder
             $new_technology = new Technology();
             $new_technology->name = $name;
             $new_technology->color = $color;
-            $new_technology->save();
+            try {
+                $new_technology->save();
+            } catch (\Illuminate\Database\QueryException $ex) {
+                dd($ex->getMessage());
+                // Note any method of class PDOException can be called on $ex.
+            } catch (\Exception $e) {
+                dd($e->getMessage());
+            }
         }
+
+        // $new_technology = new Technology();
+        // $new_technology->name = 'ciao';
+        // $new_technology->color = 'blu';
+        // $new_technology->save();
     }
 }
