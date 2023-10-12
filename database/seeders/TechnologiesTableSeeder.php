@@ -6,7 +6,7 @@ use App\Models\Technology;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class TecnologiesTableSeeder extends Seeder
+class TechnologiesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,7 +17,6 @@ class TecnologiesTableSeeder extends Seeder
             'Vue' => '#42b883',
             'React' => '#61dafb',
             'JS' => '#f7df1e',
-            'TS' => '#3178c6',
             'CSS' => '#563d7c',
             'SCSS' => '#c6538c',
             'Bootstrap' => '#7952b3',
