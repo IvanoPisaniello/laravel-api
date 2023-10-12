@@ -40,6 +40,11 @@ use Illuminate\Support\Str;
                             {{ $project->languages_used }}
                             @endif
                         </p>
+                        <div>
+                            @foreach ($project->technologies as $technology)
+                                <div class="badge" style="background-color: rgb({{ $technology->color }})">{{ $technology->name }}</div>
+                            @endforeach
+                          </div>
                     </div>
                     <div class="card-footer bg-transparent">
                         <a href="{{ $project->github_url }}" class="btn btn-light btn-sm rounded-pill" target="_blank">
