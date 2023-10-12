@@ -25,7 +25,14 @@ use Illuminate\Support\Str;
                     <div class="card-body">
                         <h5 class="card-title text-white">{{ $project->title }}</h5>
                         <p class="card-text custom-text-color">{{ str::limit($project->description, $limit = 70, $end = '...') }}</p>
-
+                        <p class="badge mb-4 mt-3">
+                            @if ($project->type)
+                                {{ $project->type->name }} ({{ $project->type->description }})
+                            @else
+                               <p>Il campo è null</p>
+                            @endif
+                        </p>
+                     
                         <small class="card-text custom-text-color">Linguaggi utilizzati:
                             @if(is_array($project->languages_used))
                             {{ implode(', ', $project->languages_used) }}

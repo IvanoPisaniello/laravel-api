@@ -48,6 +48,14 @@
                     <div class="alert text-danger">{{ $message }}</div>
                 @enderror
             </div>
+            <div class="mb-3">
+                <label class="form-label">Tipologia progetto</label>
+                <select class="form-select" name="type">
+                    @foreach ( $types as $type )
+                    <option value="{{ $type->id }}">{{$type->name}}</option>
+                    @endforeach
+                </select>
+            </div>
 
             <button type="submit" class="btn btn-primary">Salva</button>
         </form>

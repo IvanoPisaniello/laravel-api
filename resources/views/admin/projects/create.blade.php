@@ -8,7 +8,7 @@
             @csrf()
 
             <div class="mb-3">
-                <label class="form-labal">Titolo</label>
+                <label class="form-label">Titolo</label>
                 <input type="text" class="form-control @error('title') is-invalid @enderror" name="title"
                     value="{{ old('title') }}">
                 @error('title')
@@ -16,21 +16,21 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <label class="form-labal">Descrizione</label>
+                <label class="form-label">Descrizione</label>
                 <textarea class="form-control @error('description') is-invalid @enderror" name="description">{{ old('description') }}</textarea>
                 @error('description')
                     <div class="alert text-danger">{{ $message }}</div>
                 @enderror
             </div>
             <div class="mb-3">
-                <label class="form-labal">Carica Immagine</label>
+                <label class="form-label">Carica Immagine</label>
                 <input type="file" class="form-control @error('thumb') is-invalid @enderror" name="image" accept="image/*">
                 @error('image')
                     <div class="alert text-danger">{{ $message }}</div>
                 @enderror
             </div>
             <div class="mb-3">
-                <label class="form-labal">Linguaggi usati</label>
+                <label class="form-label">Linguaggi usati</label>
                 <input type="text" class="form-control @error('price') is-invalid @enderror" name="languages_used"
                     value="{{ old('languages_used') }}">
                 @error('languages_used')
@@ -38,7 +38,7 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <label class="form-labal">Link GitHub del progetto</label>
+                <label class="form-label">Link GitHub del progetto</label>
                 <input type="text" class="form-control @error('price') is-invalid @enderror" name="github_url"
                     value="{{ old('github_url') }}">
                 @error('github_url')
@@ -46,8 +46,8 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <label class="form-labal">Tipologia progetto</label>
-                <select class="form-select" name="type">
+                <label class="form-label">Tipologia progetto</label>
+                <select class="form-select" name="type_id">
                     @foreach ( $types as $type )
                     <option value="{{ $type->id }}">{{$type->name}}</option>
                     @endforeach
