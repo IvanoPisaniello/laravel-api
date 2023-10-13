@@ -53,12 +53,14 @@
                     @endforeach
                 </select>
             </div>
-            @foreach ($technologies as $technology)
             <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" name="technologies[]" value="{{$technology->id}}" {{ $project->technologies?->contains($technology) ? 'checked' : '' }}>
-                <label class="form-check-label" for="flexSwitchCheckDefault">{{$technology->name}}</label>
-              </div>
-            @endforeach
+                @foreach ($technologies as $technology)
+                <div class="form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheck{{$technology->id}}" name="technologies[]" value="{{$technology->id}}" {{ $project->technologies?->contains($technology) ? 'checked' : '' }}>
+                    <label class="form-check-label me-5" for="flexSwitchCheck{{$technology->id}}">{{$technology->name}}</label>
+                </div>
+                @endforeach
+            </div>
 
             <button type="submit" class="btn btn-primary">Salva</button>
         </form>
