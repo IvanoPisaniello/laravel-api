@@ -33,13 +33,13 @@ use Illuminate\Support\Str;
                             @endif
                         </p>
                      
-                        <p class="card-text custom-text-color">Linguaggi utilizzati:
+                        {{-- <p class="card-text custom-text-color">Linguaggi utilizzati:
                             @if(is_array($project->languages_used))
                             {{ implode(', ', $project->languages_used) }}
                             @else
                             {{ $project->languages_used }}
                             @endif
-                        </p>
+                        </p> --}}
                         <div>
                             @foreach ($project->technologies as $technology)
                                 <div class="badge" style="background-color: rgb({{ $technology->color }})">{{ $technology->name }}</div>

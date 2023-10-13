@@ -30,10 +30,10 @@ class ProjectController extends Controller
 
     public function create()
     {
-
+        $project = new Project();
         $types = Type::all();
         $technologies = Technology::all();
-        return view('admin.projects.create', ['types' => $types, 'technologies' => $technologies]);
+        return view('admin.projects.create', ['types' => $types, 'technologies' => $technologies, 'project' => $project]);
     }
 
 

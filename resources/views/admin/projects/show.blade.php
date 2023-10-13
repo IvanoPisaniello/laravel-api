@@ -14,13 +14,13 @@
                         Il campo è null
                     @endif
                 </p>
-                <p class="card-text">Linguaggi utilizzati:
+                {{-- <p class="card-text">Linguaggi utilizzati:
                     @if(is_array($project->languages_used))
                         {{ implode(', ', $project->languages_used) }}
                     @else
                         {{ $project->languages_used }}
                     @endif
-                </p>
+                </p> --}}
 
                 <div>
                     @foreach ($project->technologies as $technology)
