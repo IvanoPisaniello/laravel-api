@@ -24,9 +24,11 @@
 
                 <div>
                     @foreach ($project->technologies as $technology)
-                        <div class="badge" style="background-color: rgb({{ $technology->color }})">{{ $technology->name }}</div>
+                        <div class="badge" style="background-color: {{ $technology->color }}; border-radius: 10px; padding: 5px; margin-right: 5px;">
+                            {{ $technology->name }}
+                        </div>
                     @endforeach
-                  </div>
+                </div>
                 <div class="mt-3">
                     <a href="{{ $project->github_url }}" class="btn btn-primary btn-rounded">
                         <i class="fa-brands fa-github"></i>
