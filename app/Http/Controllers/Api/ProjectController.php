@@ -10,7 +10,8 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $projects = Project::paginate(3);
+        //con il paginate vado a fare una request la cui risposta sarà soltanto di 3 elementi per pagina
+        $projects = Project::with('type')->paginate(3);
 
         return response()->json([
             "message" => "lista progetti",
