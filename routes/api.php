@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ProjectController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+//post-it quando scrivi ProjectController selezionare nel menu a destra api projectcontroller per essere sicuro di avere scelto quello giusto.
+Route::get("projects", [ProjectController::class, "index"]);
