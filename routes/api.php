@@ -22,3 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 //post-it quando scrivi ProjectController selezionare nel menu a destra api projectcontroller per essere sicuro di avere scelto quello giusto.
 Route::get("projects", [ProjectController::class, "index"]);
+Route::get("projects/{slug}", [ProjectController::class, 'show']);
