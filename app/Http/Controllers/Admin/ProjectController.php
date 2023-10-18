@@ -110,7 +110,7 @@ class ProjectController extends Controller
             Storage::delete($project->image);
         }
 
-
+        $project->technologies()->detach();
         // Effettua l'eliminazione del progetto
         $project->delete();
 
