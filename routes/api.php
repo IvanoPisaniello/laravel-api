@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\ProjectController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //post-it quando scrivi ProjectController selezionare nel menu a destra api projectcontroller per essere sicuro di avere scelto quello giusto.
 Route::get("projects", [ProjectController::class, "index"]);
 Route::get("projects/{slug}", [ProjectController::class, 'show']);
+
+//rotta per i contatti
+Route::post("contacts", [ContactController::class, "store"]);
