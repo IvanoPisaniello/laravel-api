@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NewContact;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Contact;
@@ -24,6 +26,7 @@ class ContactController extends Controller
         $newContact->message = $data["message"];
 
         $newContact->save();
+        Mail::to($data['email'])->send(new NewContact);
 
         return response()->json([
             'message' => 'Grazie per averci contattato, la risponderò il prima possibile!'
